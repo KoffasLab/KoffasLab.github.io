@@ -818,6 +818,7 @@
                     </div>
                 </div>
 
+
                 <!-- Alumni -->
                 <div class="section">
                     <h2 class="section-header">Alumni</h2>
@@ -1119,63 +1120,45 @@
             </div>
         </div>
     </div>
-   <script>
-       <div class="cat-container" id="catContainer">
+    <!-- Hidden Cat Container -->
+    <div class="cat-container" id="catContainer">
         <div class="cat-emoji">🐱</div>
         <div class="cat-message" id="catMessage">Meow! You found the secret!</div>
     </div>
-// Auto-open external links in new tabs
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all links on the page
-    const links = document.querySelectorAll('a[href]');
-    
-    links.forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Skip if already has target attribute or is internal navigation
-        if (link.hasAttribute('target') || !href) return;
-        
-        // Check if it's an external link
-        if (href.startsWith('http://') || 
-            href.startsWith('https://') || 
-            href.startsWith('mailto:') || 
-            href.startsWith('tel:')) {
+
+    <script>
+        // Simple function - just show emoji next to name
+        function showCat(nameElement, person) {
+            const catSpan = nameElement.querySelector('.cat-inline');
+            catSpan.style.display = 'inline';
             
-            // Don't open mailto and tel links in new tab
-            if (!href.startsWith('mailto:') && !href.startsWith('tel:')) {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-                
-                // Optional: Add visual indicator
-                if (!link.classList.contains('no-external-indicator')) {
-                    link.classList.add('external-indicator');
-                }
-            }
+            // Hide after 3 seconds
+            setTimeout(() => {
+                catSpan.style.display = 'none';
+            }, 3000);
         }
-    });
-});
-</script>
+
+        // Auto-open external links in new tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href]');
+            
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                if (link.hasAttribute('target') || !href) return;
+                
+                if (href.startsWith('http://') || 
+                    href.startsWith('https://') || 
+                    href.startsWith('mailto:') || 
+                    href.startsWith('tel:')) {
+                    
+                    if (!href.startsWith('mailto:') && !href.startsWith('tel:')) {
+                        link.setAttribute('target', '_blank');
+                        link.setAttribute('rel', 'noopener noreferrer');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-             <!-- graduated students 
-
-            
-            <div class="member-card">
-                            <div class="member-photo">
-                            <img src="members/Tarif.jpg" alt="TI" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                            </div>
-                            <div class="member-name">Md Tariful Islam</div>
-                            <div class="member-title">Chemical and Biological Engineering</div>
-                            <div class="member-specializations">
-                                <span class="specialization-tag">Biomolecular Engineering</span>
-                                <span class="specialization-tag">Machine Learning</span>
-                            </div>
-                            <div class="member-bio">
-                                B.Sc. Chemical Engineering, Bangladesh University of Engineering and Technology (BUET), Bangladesh, 2021        
-                            </div>
-                            <div class="member-contact">
-                                <a href="mailto:islamm8@rpi.edu" class="contact-btn">Email</a>
-                                <a href="https://www.linkedin.com/in/md-tariful-islam-7547a013b/" class="contact-btn">Profile</a>
-                            </div>
-                        </div>-->
