@@ -166,6 +166,17 @@
             border-left-color: var(--sage-dark);
         }
 
+        /* Special cursor for clickable names */
+        .member-card.clickable .member-name {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .member-card.clickable .member-name:hover {
+            color: var(--sage-dark);
+            transform: scale(1.05);
+        }
+
         .member-photo {
             width: 100px;
             height: 100px;
@@ -306,6 +317,81 @@
             font-style: italic;
         }
 
+        /* Cat Easter Egg Styles */
+        .cat-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .cat-container.show {
+            opacity: 1;
+            animation: catBounce 2s ease-in-out;
+        }
+
+        .cat-emoji {
+            font-size: 8rem;
+            animation: catFloat 2s ease-in-out infinite;
+        }
+
+        .cat-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: var(--sage-darker);
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        @keyframes catBounce {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+            }
+        }
+
+        @keyframes catFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: sparkleAnimation 1.5s ease-out forwards;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -378,6 +464,14 @@
 
             .alumni-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cat-emoji {
+                font-size: 6rem;
+            }
+
+            .cat-message {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -468,7 +562,6 @@
                             <div class="member-name">Dr. Yuefan (Fiona) Song</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Biopolymers: Condroitin</span>
-                                <!--<span class="specialization-tag">Glycomaterials Development</span>-->
                             </div>
                             <div class="member-bio">
                                 B.S. Xiamen University, Xiamen, China, 2003<br>Ph.D. Chinese Academy of Sciences, Dalian, China, 2011
@@ -479,26 +572,19 @@
                                 <a href="https://scholar.google.com/citations?user=fofWD80AAAAJ&hl=en" class="scholar-btn">Publications</a>
                             </div>
                         </div>
-                            <div class="member-card" id="makoto">
+
+                        <div class="member-card" id="makoto">
                             <div class="member-photo">
                                 <img src="members/Makoto.jpeg" alt="YS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Dr. Makoto Takashima</div>
                             <div class="member-title">Visiting Scholar</div>
-                            <div class="member-specializations">
-                                <!--<span class="specialization-tag">Biopolymers: Condroitin</span>-->
-                                <!--<span class="specialization-tag">Glycomaterials Development</span>-->
-                            </div>
-                            <div class="member-bio">
-                                <!--B.S. Xiamen University, Xiamen, China, 2003<br>Ph.D. Chinese Academy of Sciences, Dalian, China, 2011-->
-                            </div>
                             <div class="member-contact">
-                                 <a href="mailto:takasm@rpi.edu" class="contact-btn">Email</a>
-                                <!--<a href="https://www.linkedin.com/in/yuefan-song-biochemeng-rpicbis-7u3f4n50n9/" class="contact-btn">Profile</a>
-                                <a href="https://scholar.google.com/citations?user=fofWD80AAAAJ&hl=en" class="scholar-btn">Publications</a>-->
+                                <a href="mailto:takasm@rpi.edu" class="contact-btn">Email</a>
                             </div>
                         </div>
-                            <div class="member-card" id="gyna">
+
+                        <div class="member-card" id="gyna">
                             <div class="member-photo">
                                 <img src="members/Gyna.png" alt="GS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
@@ -506,34 +592,30 @@
                             <div class="member-title">Visiting Scholar</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Biopolymers</span>
-                                <!--<span class="specialization-tag">Glycomaterials Development</span>-->
                             </div>
                             <div class="member-bio">
                                 Ph.D. Biological Engineering and Biochemistry, Polish Academy of Sciences, Poznan, Poland
                             </div>
                             <div class="member-contact">
-                                
-                                <a href="srogag@rpi.edu" class="contact-btn">Email</a>
-                                <a href="www.linkedin.com/in/grazyna-sroga-b3ab69267" class="contact-btn">Profile</a>
+                                <a href="mailto:srogag@rpi.edu" class="contact-btn">Email</a>
+                                <a href="https://www.linkedin.com/in/grazyna-sroga-b3ab69267" class="contact-btn">Profile</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                            
 
                 <!-- PhD Students -->
                 <div class="section">
                     <h2 class="section-header">PhD Students</h2>
                     <div class="members-grid">
-                        <div class="member-card" id="saurabh">
+                        <div class="member-card clickable" id="saurabh">
                             <div class="member-photo">
                                 <img src="members/Saurabh.jpg" alt="SR" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Saurabh Rastogi</div>
+                            <div class="member-name" onclick="showCat(this, 'Saurabh')">Saurabh Rastogi <span class="cat-inline" style="display: none;">🦕</span></div>
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Cell-free Metabolic Engineering</span>
-                                <!--<span class="specialization-tag">Biosynthesis</span>-->
                             </div>
                             <div class="member-bio">
                                 B.Tech. Biotechnology, Guru Gobind Singh Indraprastha University, 2019
@@ -552,7 +634,6 @@
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Biopolymers: Chondroitin</span>
-                                <!--<span class="specialization-tag">Metabolic Engineering</span>-->
                             </div>
                             <div class="member-bio">
                                 B.Sc. Chemical Engineering, Bangladesh University of Engineering and Technology (BUET)
@@ -563,11 +644,11 @@
                             </div>
                         </div>
 
-                        <div class="member-card" id="sahiti">
+                        <div class="member-card clickable" id="sahiti">
                             <div class="member-photo">
                                 <img src="members/Sahiti.jpg" alt="ST" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Sahiti Tamirisakandala</div>
+                            <div class="member-name" onclick="showCat(this, 'Sahiti')">Sahiti Tamirisakandala <span class="cat-inline" style="display: none;">🐔</span></div>
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Biopolymers: Chromoprotein</span>
@@ -638,11 +719,11 @@
                             </div>
                         </div>
 
-                        <div class="member-card" id="hana">
+                        <div class="member-card clickable" id="hana">
                             <div class="member-photo">
                                 <img src="members/Hana.jpg" alt="HZ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Hana Zeghal</div>
+                            <div class="member-name" onclick="showCat(this, 'Hana')">Hana Zeghal <span class="cat-inline" style="display: none;">🐢</span></div>
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-specializations">
                                 <span class="specialization-tag">Biopolymers: Chondroitin</span>
@@ -663,11 +744,11 @@
                 <div class="section">
                     <h2 class="section-header">Undergraduate Students</h2>
                     <div class="members-grid">
-                        <div class="member-card">
+                        <div class="member-card clickable">
                             <div class="member-photo">
                                 <img src="members/Evan.png" alt="EM" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Evan Mistler</div>
+                            <div class="member-name" onclick="showCat(this, 'Evan')">Evan Mistler <span class="cat-inline" style="display: none;">🥚</span></div>
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-contact">
                                 <a href="mailto:mistle@rpi.edu" class="contact-btn">Email</a>
@@ -675,11 +756,11 @@
                             </div>
                         </div>
 
-                        <div class="member-card">
+                        <div class="member-card clickable">
                             <div class="member-photo">
                                 <img src="members/Gina.jpg" alt="GE" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Gina Ederr</div>
+                            <div class="member-name" onclick="showCat(this, 'Gina')">Gina Ederr <span class="cat-inline" style="display: none;">🥚</span></div>
                             <div class="member-title">Biomedical Engineering</div>
                             <div class="member-contact">
                                 <a href="mailto:ederrg@rpi.edu" class="contact-btn">Email</a>
@@ -687,11 +768,11 @@
                             </div>
                         </div>
 
-                        <div class="member-card">
+                        <div class="member-card clickable">
                             <div class="member-photo">
                                 <img src="members/Rowan.jpg" alt="RS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Rowan Smith</div>
+                            <div class="member-name" onclick="showCat(this, 'Rowan')">Rowan Smith <span class="cat-inline" style="display: none;">🥚</span></div>
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-contact">
                                 <a href="mailto:smithr@rpi.edu" class="contact-btn">Email</a>
@@ -720,7 +801,6 @@
                             <div class="member-contact">
                                 <a href="mailto:bossee@rpi.edu" class="contact-btn">Email</a>
                                 <a href="https://www.linkedin.com/in/eric-bossenbroek-43bb30274/" class="contact-btn">Profile</a>
-
                             </div>
                         </div>
 
@@ -732,7 +812,7 @@
                             <div class="member-title">Chemical and Biological Engineering</div>
                             <div class="member-contact">
                                 <a href="mailto:grullj@rpi.edu" class="contact-btn">Email</a>
-                                <a href="www.linkedin.com/in/jake-grullon" class="contact-btn">Profile</a>
+                                <a href="https://www.linkedin.com/in/jake-grullon" class="contact-btn">Profile</a>
                             </div>
                         </div>
                     </div>
