@@ -368,8 +368,7 @@
                             <div class="contact-item">
                                 <h3>Contact</h3>
                                 <p>
-                                    Email: <a href="mailto:koffam@rpi.edu">koffam@rpi.edu</a><br>
-                                    Phone: <a href="tel:+15182766000">(518) 276-6000</a>
+                                    Email: <a href="mailto:koffam@rpi.edu">koffam@rpi.edu</a>
                                 </p>
                             </div>
                         </div>
@@ -385,17 +384,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script>
-        // Initialize the map
-        var map = L.map('map').setView([42.7297, -73.6806], 16);
+        // Initialize the map - centered on CBIS (Center for Biotechnology and Interdisciplinary Studies)
+        var map = L.map('map').setView([42.72873, -73.67838], 17);
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Add a marker for RPI
-        var rpiMarker = L.marker([42.7297, -73.6806]).addTo(map);
-        rpiMarker.bindPopup('<b>Koffas Lab</b><br>Rensselaer Polytechnic Institute<br>110 Eighth Street<br>Troy, NY 12180');
+        // Add a marker for CBIS - centered on building
+        var rpiMarker = L.marker([42.72873, -73.67838]).addTo(map);
+        rpiMarker.bindPopup('<b>Koffas Lab</b><br>Center for Biotechnology and Interdisciplinary Studies<br>Rensselaer Polytechnic Institute<br>Troy, NY 12180');
 
         // Custom marker icon with sage green color
         var customIcon = L.divIcon({
